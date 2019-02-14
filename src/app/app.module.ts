@@ -1,22 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ProductsService } from './services/products.service';
 import { AppComponent } from './app.component';
-import { ProductListComponent } from './products/product-list/product-list.component';
-import { ProductDetailComponent } from './products/product-detail/product-detail.component';
-import { ProductCreateComponent } from './products/product-create/product-create.component';
+import * as fromProducts from './products';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ProductListComponent,
-    ProductDetailComponent,
-    ProductCreateComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
+    AppComponent, ...fromProducts.components],
+  imports: [BrowserModule, HttpClientModule, FormsModule],
+  providers: [ProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
